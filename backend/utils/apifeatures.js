@@ -8,11 +8,12 @@ class ApiFeatures{
         const keyword = this.queryStr.keyword ? {
             name: {
                 $regex: this.queryStr.keyword,
-                $option: "i",
+                // $option: "i",
             },
         } : {};
-
+      //  console.log("keyword--", keyword);
         this.query = this.query.find({ ...keyword });
+      //  console.log('this-------', this);
         return this;
     }
 
@@ -25,7 +26,6 @@ class ApiFeatures{
 
         removeFields.forEach(key => delete queryCopy[key]);
 
-        this.query = this.query.find(queryCopy);
 
         let queryStr = JSON.stringify(queryCopy);
 
@@ -33,7 +33,7 @@ class ApiFeatures{
 
         this.query = this.query.find(JSON.parse(queryStr));
 
-        console.log(queryStr);
+        console.log(this.queryStr);
         return this;
     }
     pagination(resultPerPage) {

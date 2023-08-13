@@ -36,6 +36,7 @@ const LoginSignUp = ({ history, location }) => {
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const loginSubmit = (e) => {
+    console.log("your login detils------");
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
   };
